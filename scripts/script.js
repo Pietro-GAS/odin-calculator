@@ -2,7 +2,7 @@ const body = document.querySelector("body");
 const display = document.querySelector(".display");
 const numbers = document.querySelector(".numbers");
 const operators = document.querySelector(".operators");
-
+const special = document.querySelector(".special");
 
 // Math functions
 function add(a, b) {
