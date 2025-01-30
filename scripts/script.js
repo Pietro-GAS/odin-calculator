@@ -1,3 +1,10 @@
+const body = document.querySelector("body");
+const display = document.querySelector(".display");
+const numbers = document.querySelector(".numbers");
+const operators = document.querySelector(".operators");
+
+
+// Math functions
 function add(a, b) {
     return a + b;
 };
