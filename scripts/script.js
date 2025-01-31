@@ -43,12 +43,15 @@ function operate(operator, a, b) {
 const numberBtns = document.querySelectorAll("button.number");
 const operatorBtns = document.querySelectorAll("button.operator:not(#equal)");
 const equalBtn = document.querySelector("#equal");
+const backBtn = document.querySelector("#back");
 
 for (let button of numberBtns) {
     button.addEventListener("click", () => {
-        if(display.textContent.length < 9 && !isNaN(+display.textContent) && !isResult) {
+        if(display.textContent.length < 9 && !isNaN(+display.textContent) 
+            && !isResult && display.textContent != "0") {
             display.textContent = display.textContent.concat(button.textContent);
-        } else if (isNaN(+display.textContent) || isResult) {
+        } else if (isNaN(+display.textContent) || isResult 
+        || display.textContent == "0") {
             display.textContent = button.textContent;
             isResult = false;
         };
@@ -62,7 +65,9 @@ for (let button of operatorBtns) {
             displayValue[1] = Number(display.textContent);
         } else {
             displayValue[0] = Number(display.textContent);
-            displayValue[1] = operate(currentOperator, displayValue[1], displayValue[0]);       
+            displayValue[1] = operate(
+                currentOperator, displayValue[1], displayValue[0]
+            );       
         };
         display.textContent = button.textContent;        
         currentOperator = button.textContent;
@@ -76,5 +81,15 @@ equalBtn.addEventListener("click", () => {
         display.textContent = displayValue[1];
         currentOperator = "";
         isResult = true;
+    };
+});
+
+backBtn.addEventListener("click", () => {
+    if(display.textContent.length == 1) {
+        display.textContent = "0";
+        displayValue[0] = Number(display.textContent);
+    } else if (display.textContent.length > 1) {
+        display.textContent = display.textContent.slice(-1);
+        displayValue[0] = Number(display.textContent);
     };
 })
