@@ -120,3 +120,10 @@ percentBtn.addEventListener("click", () => {
         display.textContent = displayValue[0];
     };
 });
+
+/*
+TO DO:
+    - add decimal point functionality
+    - add +/- functionality
+    - add keyboard support
+*/
