@@ -50,6 +50,7 @@ const operatorBtns = document.querySelectorAll("button.operator:not(#equal)");
 const equalBtn = document.querySelector("#equal");
 const backBtn = document.querySelector("#back");
 const clearBtn = document.querySelector("#c");
+const percentBtn = document.querySelector("#percent");
 
 for (let button of numberBtns) {
     button.addEventListener("click", () => {
@@ -105,4 +106,11 @@ clearBtn.addEventListener("click", () => {
     currentOperator = "";
     isResult = false;
     display.textContent = "0";
-})
+});
+
+percentBtn.addEventListener("click", () => {
+    if (!isNaN(+display.textContent) && display.textContent != "0") {
+        displayValue[0] = Number((display.textContent / 100).toPrecision(7));
+        display.textContent = displayValue[0];
+    };
+});
