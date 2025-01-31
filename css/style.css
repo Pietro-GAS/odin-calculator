@@ -9,57 +9,31 @@ body {
 .container {
     display: grid;
     grid-template-columns: repeat(4, 100px);
-    grid-template-rows: repeat(6, 80px);
+    grid-template-rows: repeat(7, 80px);
     gap: 2px 2px;
     border-style: solid;
     border-width: 2px;
     border-color: black;
-    padding: 2px 2px 2px 2px;
+    padding: 5px 5px 5px 5px;
+    background-color: beige;
 }
 
 .display {
     display: flex;
-    grid-column-start: -1;
-    grid-column-end: 1;
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 2;
     border: solid 1px black;
     background-color: lightgrey;
 }
 
 .special {
-    display: flex;
-    flex-direction: row;
-    grid-column: 1 / span 3;
-    grid-row: 2 / span 1;
-    border: solid 1px black;
     background-color: lightskyblue;
 }
 
-.numbers {
-    display: flex;
-    flex-wrap: wrap;
-    grid-column: 1 / span 3;
-    grid-row: 3 / span 4;
-    border: solid 1px black;
+.number {
     background-color: lightseagreen;
 }
 
-.operators {
-    display: flex;
-    flex-direction: column;
-    grid-column: 4 / span 1;
-    grid-row: 2 / span 5;
-    border: solid 1px black;
+.operator {
     background-color: lightsalmon;
-}
-
-.special button {
-    flex: 1;
-}
-
-.numbers button {
-    flex: 1 0 33%;
-}
-
-.operators button {
-    flex: 1;
 }
