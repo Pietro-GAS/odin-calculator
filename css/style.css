@@ -24,6 +24,12 @@ body {
     grid-row: 1 / span 2;
     border: solid 1px black;
     background-color: lightgrey;
+    padding: 2px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 120px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .special {
