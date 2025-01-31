@@ -3,22 +3,27 @@ const display = document.querySelector(".display");
 let displayValue = [];
 let currentOperator = "";
 let isResult = false;
+display.textContent = "0";
 
 // Math functions
 function add(a, b) {
-    return a + b;
+    let sum = (a + b)
+    return Number(sum.toPrecision(7));
 };
 
 function subtract(a, b) {
-    return a - b;
+    let difference = (a - b)
+    return Number(difference.toPrecision(7));
 };
 
 function multiply(a, b) {
-    return a * b;
+    let mult = (a * b)
+    return Number(mult.toPrecision(7));
 };
 
 function divide(a, b) {
-    return a / b;
+    let division = (a / b)
+    return Number(division.toPrecision(7));
 };
 
 function operate(operator, a, b) {
@@ -44,6 +49,7 @@ const numberBtns = document.querySelectorAll("button.number");
 const operatorBtns = document.querySelectorAll("button.operator:not(#equal)");
 const equalBtn = document.querySelector("#equal");
 const backBtn = document.querySelector("#back");
+const clearBtn = document.querySelector("#c");
 
 for (let button of numberBtns) {
     button.addEventListener("click", () => {
@@ -92,4 +98,11 @@ backBtn.addEventListener("click", () => {
         display.textContent = display.textContent.slice(-1);
         displayValue[0] = Number(display.textContent);
     };
+});
+
+clearBtn.addEventListener("click", () => {
+    displayValue = [];
+    currentOperator = "";
+    isResult = false;
+    display.textContent = "0";
 })
