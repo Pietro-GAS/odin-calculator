@@ -37,3 +37,9 @@ function operate(operator, a, b) {
             break;
     };
 };
+
+const buttons = document.querySelectorAll("button");
+
+for (let button of buttons) {
+    button.addEventListener("click", () => display.textContent = button.textContent);
+};
