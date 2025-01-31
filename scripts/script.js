@@ -38,7 +38,11 @@ function operate(operator, a, b) {
             return multiply(a, b);
             // break;
         case "/":
-            return divide(a, b);
+            if (b != 0) {
+                return divide(a, b)
+            } else {
+                return "ERR! DIV/0"
+            };
             // break;
     };
 };
@@ -67,7 +71,9 @@ for (let button of numberBtns) {
 
 for (let button of operatorBtns) {
     button.addEventListener("click", () => {
-        if (currentOperator == "") {
+        if (isNaN(display.textContent)) {
+            return 0;
+        } else if (currentOperator == "") {
             displayValue[0] = Number(display.textContent);
             displayValue[1] = Number(display.textContent);
         } else {
