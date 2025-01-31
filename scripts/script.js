@@ -1,8 +1,7 @@
 const body = document.querySelector("body");
 const display = document.querySelector(".display");
-const numbers = document.querySelector(".numbers");
-const operators = document.querySelector(".operators");
-const special = document.querySelector(".special");
+let displayValue = [];
+let currentOperator = "";
 
 // Math functions
 function add(a, b) {
@@ -24,26 +23,46 @@ function divide(a, b) {
 function operate(operator, a, b) {
     switch (operator) {
         case "+":
-            add(a, b);
-            break;
+            return add(a, b);
+            // break;
         case "-":
-            subtract(a, b);
-            break;
+            return subtract(a, b);
+            // break;
         case "*":
-            multiply(a, b);
-            break;
+            return multiply(a, b);
+            // break;
         case "/":
-            divide(a, b);
-            break;
+            return divide(a, b);
+            // break;
     };
 };
 
+// Button functionality
+
 const numberBtns = document.querySelectorAll("button.number");
+const operatorBtns = document.querySelectorAll("button.operator:not(#equal)");
+const equalBtn = document.querySelector("#equal");
 
 for (let button of numberBtns) {
     button.addEventListener("click", () => {
-        if(display.textContent.length < 9) {
-            display.textContent = display.textContent.concat(button.textContent)
+        if(display.textContent.length < 9 && !isNaN(+display.textContent)) {
+            display.textContent = display.textContent.concat(button.textContent);
+        } else if (isNaN(+display.textContent)) {
+            display.textContent = button.textContent;
         };
     });
+};
+
+for (let button of operatorBtns) {
+    button.addEventListener("click", () => {
+        if (currentOperator == "") {
+            displayValue[0] = Number(display.textContent);
+            displayValue[1] = Number(display.textContent);
+        } else {
+            displayValue[0] = Number(display.textContent);
+            displayValue[1] = operate(currentOperator, displayValue[1], displayValue[0]);       
+        };
+        display.textContent = button.textContent;        
+        currentOperator = button.textContent;
+        });
 };
