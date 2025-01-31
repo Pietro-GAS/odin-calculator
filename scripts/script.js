@@ -38,8 +38,12 @@ function operate(operator, a, b) {
     };
 };
 
-const buttons = document.querySelectorAll("button");
+const numberBtns = document.querySelectorAll("button.number");
 
-for (let button of buttons) {
-    button.addEventListener("click", () => display.textContent = button.textContent);
+for (let button of numberBtns) {
+    button.addEventListener("click", () => {
+        if(display.textContent.length < 9) {
+            display.textContent = display.textContent.concat(button.textContent)
+        };
+    });
 };
